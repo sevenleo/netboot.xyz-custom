@@ -1,6 +1,8 @@
 #!ipxe
-menu examples:
-item --gap others examples from github:
+
+menu examples from Github
+
+item --gap from github:
 item dol-leodagan ${space} github/dol-leodagan
 item barnabyc ${space} github/barnabyc
 item BasicWombat ${space} github/BasicWombat
@@ -19,8 +21,8 @@ item rjocoleman ${space} github/rjocoleman
 item p0xus ${space} github/p0xus
 item oppergod ${space} github/oppergod
 item Firminator ${space} github/Firminator
-item example0 ${space} Loads another custom sub menu
-item example1 ${space} Loads another custom sub menu
+
+
 
 item --gap
 choose --default ${menu} menu || goto utils_exit
@@ -28,3 +30,114 @@ echo ${cls}
 goto ${menu} ||
 chain ${menu}.ipxe || goto utils_exit
 goto utils_exit
+
+
+
+
+
+
+
+
+:github_sevenleo
+echo Chains into sevenleo @ github ...
+chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_dol-leodagan
+echo Chains into dol-leodagan @ github ...
+chain https://raw.githubusercontent.com/dol-leodagan/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_barnabyc
+echo Chains into barnabyc @ github ...
+chain https://raw.githubusercontent.com/barnabyc/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_BasicWombat
+echo Chains into BasicWombat @ github ...
+chain https://raw.githubusercontent.com/BasicWombat/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_baskedk
+echo Chains into baskedk @ github ...
+chain https://raw.githubusercontent.com/baskedk/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_fcenobi
+echo Chains into fcenobi @ github ...
+chain https://raw.githubusercontent.com/fcenobi/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_e1z0
+echo Chains into e1z0 @ github ...
+chain https://raw.githubusercontent.com/e1z0/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_GavinThornhill
+echo Chains into GavinThornhill @ github ...
+chain https://raw.githubusercontent.com/GavinThornhill/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_Firminator
+echo Chains into Firminator @ github ...
+chain https://raw.githubusercontent.com/Firminator/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_jraebrown
+echo Chains into jraebrown @ github ...
+chain https://raw.githubusercontent.com/jraebrown/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_jpastuszek
+echo Chains into jpastuszek @ github ...
+chain https://raw.githubusercontent.com/jpastuszek/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_joltcan
+echo Chains into joltcan @ github ...
+chain https://raw.githubusercontent.com/joltcan/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_jerrywoo96
+echo Chains into jerrywoo96 @ github ...
+chain https://raw.githubusercontent.com/jerrywoo96/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_Malmis
+echo Chains into Malmis @ github ...
+chain https://raw.githubusercontent.com/Malmis/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_ReubenBTalbott
+echo Chains into ReubenBTalbott @ github ...
+chain https://raw.githubusercontent.com/ReubenBTalbott/netboot.xyz-custom/master/windows.ipxe || goto custom
+
+
+:github_rjocoleman
+echo Chains into rjocoleman @ github ...
+chain https://raw.githubusercontent.com/rjocoleman/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_p0xus
+echo Chains into p0xus @ github ...
+chain https://raw.githubusercontent.com/p0xus/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_oppergod
+echo Chains into oppergod @ github ...
+chain https://raw.githubusercontent.com/oppergod/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_Firminator
+echo Chains into Firminator @ github ...
+chain https://raw.githubusercontent.com/Firminator/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+
+
+
+
+:utils_exit
+clear menu
+exit 0
+
