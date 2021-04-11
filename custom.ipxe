@@ -13,9 +13,8 @@ item --gap Linux:
 item --gap Utilities:
 item slax_x86 ${space} SLAX x86
 
-item --gap
-item --gap menus:
-item submenu ${space} Submenu
+item --gap sub-menus:
+item example ${space} example
 item example_github ${space} Loads custom from github
 
 
@@ -33,9 +32,9 @@ set util_file slax-32bit-9.11.0.iso
 goto boot_memdisk
 
 
-:submenu
+:example
 echo Chains into another menu...
-chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom1.ipxe || goto custom
+chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe.example || goto custom
 
 
 :example_github
