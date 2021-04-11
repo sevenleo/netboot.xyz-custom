@@ -15,7 +15,7 @@ item slax_x86 ${space} SLAX x86
 
 item --gap Utilities:
 item plop ${space} Plop Boot Manager 5.0
-item udpcast ${space} udpcast
+item udpcast ${space} UDPCast
 item ntpsswd_changepassword ${space} ntpsswd_changepassword
 
 #####################################################
@@ -48,9 +48,12 @@ set util_file plpbt.iso
 goto boot_memdisk
 
 :udpcast
-set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
-set util_file udpcd.iso
-goto boot_memdisk
+#set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+#set util_file udpcd.iso
+#goto boot_memdisk
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+boot
 
 :ntpsswd_changepassword
 set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/ntpsswd_changepassword.iso
