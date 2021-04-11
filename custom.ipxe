@@ -35,6 +35,8 @@ item oppergod ${space} github/oppergod
 item Firminator ${space} github/Firminator
 item example0 ${space} Loads another custom sub menu
 item example1 ${space} Loads another custom sub menu
+item example_github ${space} Loads custom from github
+
 
 item --gap
 choose --default ${menu} menu || goto utils_exit
