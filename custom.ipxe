@@ -11,6 +11,7 @@ item --gap Windows:
 item --gap Linux:
 
 item --gap Utilities:
+item plop ${space} Plop Boot Manager 5.0
 item slax_x86 ${space} SLAX x86
 
 item --gap sub-menus:
@@ -29,6 +30,11 @@ goto utils_exit
 :slax_x86
 set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
 set util_file slax-32bit-9.11.0.iso
+goto boot_memdisk
+
+:plop
+set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/plpbt.iso
+set util_file plpbt.iso
 goto boot_memdisk
 
 
