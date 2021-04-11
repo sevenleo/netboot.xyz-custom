@@ -1,0 +1,30 @@
+#!ipxe
+
+item --gap others examples from github:
+item dol-leodagan ${space} github/dol-leodagan
+item barnabyc ${space} github/barnabyc
+item BasicWombat ${space} github/BasicWombat
+item baskedk ${space} github/baskedk
+item fcenobi ${space} github/fcenobi
+item e1z0 ${space} github/e1z0
+item GavinThornhill ${space} github/GavinThornhill
+item Firminator ${space} github/Firminator
+item jraebrown ${space} github/jraebrown
+item jpastuszek ${space} github/jpastuszek
+item joltcan ${space} github/joltcan
+item jerrywoo96 ${space} github/jerrywoo96
+item Malmis ${space} github/Malmis
+item ReubenBTalbott ${space} github/ReubenBTalbott
+item rjocoleman ${space} github/rjocoleman
+item p0xus ${space} github/p0xus
+item oppergod ${space} github/oppergod
+item Firminator ${space} github/Firminator
+item example0 ${space} Loads another custom sub menu
+item example1 ${space} Loads another custom sub menu
+
+item --gap
+choose --default ${menu} menu || goto utils_exit
+echo ${cls}
+goto ${menu} ||
+chain ${menu}.ipxe || goto utils_exit
+goto utils_exit
