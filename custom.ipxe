@@ -5,7 +5,7 @@
 #sleep 1
 
 menu 
-item --gap (reload)
+item --gap reload
 item github_sevenleo ${space} follow @Sevenleo !
 
 item --gap Windows:
