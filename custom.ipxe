@@ -2,18 +2,18 @@
 
 :start
 echo follow @Sevenleo !
-sleep 3
-
-
-
-
 
 
 menu Utilities - Image Sig Checks: [${img_sigs_enabled}]
+item --gap
+item sevenleo ${space} github/sevenleo
+
 item --gap Utilities:
 item slax_x86 ${space} SLAX x86
 
-item sevenleo ${space} github/sevenleo
+item --gap
+item --gap
+item --gap others examples from github:
 item dol-leodagan ${space} github/dol-leodagan
 item barnabyc ${space} github/barnabyc
 item BasicWombat ${space} github/BasicWombat
@@ -33,10 +33,7 @@ item p0xus ${space} github/p0xus
 item oppergod ${space} github/oppergod
 item Firminator ${space} github/Firminator
 
-item --gap netboot.xyz tools:
-item nbxyz-custom ${space} Set Github username [user: ${github_user}]
-item testdistro ${space} Test Distribution ISO
-item testpr ${space} Test forked netboot.xyz branch or hash
+item --gap
 choose --default ${menu} menu || goto utils_exit
 echo ${cls}
 goto ${menu} ||
