@@ -1,17 +1,18 @@
 #!ipxe
 
-:start
-echo follow @Sevenleo !
+#:start
+#echo follow @Sevenleo !
+#sleep 1
 
+menu follow @Sevenleo !
 
-menu Utilities - Image Sig Checks: [${img_sigs_enabled}]
-item --gap
-item sevenleo ${space} github/sevenleo
+item --gap Windows:
+
+item --gap Linux:
 
 item --gap Utilities:
 item slax_x86 ${space} SLAX x86
 
-item --gap
 item --gap
 item --gap others examples from github:
 item dol-leodagan ${space} github/dol-leodagan
