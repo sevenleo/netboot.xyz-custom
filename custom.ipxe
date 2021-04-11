@@ -9,20 +9,30 @@ sleep 3
 
 
 
-
 menu Utilities - Image Sig Checks: [${img_sigs_enabled}]
 item --gap Utilities:
 item slax_x86 ${space} SLAX x86
-item alt_linux_rescue ${space} ALT Linux Rescue
-item debian ${space} Debian Live XFCE
-item breakin ${space} Breakin
-item clonezilla ${space} Clonezilla
-item dban ${space} DBAN
-item gparted ${space} GParted
-item memtest-501 ${space} Memtest86+ 5.01
-item supergrub ${space} Super Grub2 Disk
-item sysrcd ${space} SystemRescueCD
-item ubcd ${space} Ultimate Boot CD (UBCD)
+
+item sevenleo ${space} github/sevenleo
+item dol-leodagan ${space} github/dol-leodagan
+item barnabyc ${space} github/barnabyc
+item BasicWombat ${space} github/BasicWombat
+item baskedk ${space} github/baskedk
+item fcenobi ${space} github/fcenobi
+item e1z0 ${space} github/e1z0
+item GavinThornhill ${space} github/GavinThornhill
+item Firminator ${space} github/Firminator
+item jraebrown ${space} github/jraebrown
+item jpastuszek ${space} github/jpastuszek
+item joltcan ${space} github/joltcan
+item jerrywoo96 ${space} github/jerrywoo96
+item Malmis ${space} github/Malmis
+item ReubenBTalbott ${space} github/ReubenBTalbott
+item rjocoleman ${space} github/rjocoleman
+item p0xus ${space} github/p0xus
+item oppergod ${space} github/oppergod
+item Firminator ${space} github/Firminator
+
 item --gap netboot.xyz tools:
 item nbxyz-custom ${space} Set Github username [user: ${github_user}]
 item testdistro ${space} Test Distribution ISO
@@ -33,111 +43,114 @@ goto ${menu} ||
 chain ${menu}.ipxe || goto utils_exit
 goto utils_exit
 
-:slax_x86
-set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
-set util_file slax-32bit-9.11.0.iso
-goto boot_memdisk
 
 
-:alt_linux_rescue
-iseq ${arch} x86_64 && goto alt_linux_rescue_x64 ||
-set util_path nightly.altlinux.org/p8/release/alt-p8-rescue-20180312-i586.iso
-set util_file alt-p8-rescue-20180312-i586.iso
-goto boot_memdisk
 
-:alt_linux_rescue_x64
-set util_path nightly.altlinux.org/p8/release/alt-p8-rescue-20180312-x86_64.iso
-set util_file alt-p8-rescue-20180312-x86_64.iso
-goto boot_memdisk
 
-:debian
-set debian_version 9.9.0
-set util_path https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-${debian_version}-amd64-xfce.iso
-set util_file debian-live-${debian_version}-amd64-xfce.iso
-goto boot_memdisk
 
-:breakin
-set breakin_version 4.26.1-53
-set util_path www.advancedclustering.com/wp-content/uploads/2017/02/bootimage-${breakin_version}.iso
-set util_file bootimage-${breakin_version}.iso
-goto boot_memdisk
 
-:clonezilla
-set clonezilla_version 2.6.1-25
-set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/${clonezilla_version}/clonezilla-live-${clonezilla_version}-amd64.iso/download
-set util_file clonezilla-live-${clonezilla_version}-amd64.iso
-goto boot_memdisk
 
-:dban
-set dban_version 2.3.0
-set util_path sourceforge.net/projects/dban/files/dban/dban-${dban_version}/dban-${dban_version}_i586.iso/download
-set util_file dban-${dban_version}_i586.iso
-goto boot_memdisk
+:github_sevenleo
+echo Chains into sevenleo @ github ...
+chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe || goto custom
 
-:gparted
-set gparted_version 1.0.0-3
-set util_path netix.dl.sourceforge.net/project/gparted/gparted-live-stable/${gparted_version}/gparted-live-${gparted_version}-amd64.iso
-set util_file gparted-live-${gparted_version}-amd64.iso
-goto boot_memdisk
 
-:memtest-501
-set util_path boot.netboot.xyz/utils/memtest86-5.01.0
-set util_file memtest86-5.01.0
-goto boot_memtest
+:github_dol-leodagan
+echo Chains into dol-leodagan @ github ...
+chain https://raw.githubusercontent.com/dol-leodagan/netboot.xyz-custom/master/custom.ipxe || goto custom
 
-:supergrub
-set util_path sourceforge.net/projects/supergrub2/files/2.02s10-beta5/super_grub2_disk_2.02s10-beta5/super_grub2_disk_hybrid_2.02s10-beta5.iso/download
-set util_file super_grub2_disk_hybrid_2.02s4.iso
-goto boot_memdisk
 
-:sysrcd
-set sysrcdpath sourceforge.net/projects/netboot-xyz/files/distros/sysresccd-x86/4.8.1
-kernel --name altker64 https://${sysrcdpath}/altker64/download setkmap=no net.ifnames=0 backstore=off
-initrd --name initram.igz https://${sysrcdpath}/initram.igz/download
-initrd --name sysrcd.dat https://${sysrcdpath}/sysrcd.dat/download /sysrcd.dat
-echo
-echo MD5sums:
-md5sum altker64 initram.igz sysrcd.dat
-iseq ${img_sigs_enabled} true && goto verify_sigs_sysrcd || goto skip_sigs_sysrcd
-:verify_sigs_sysrcd
-echo
-echo Checking signatures...
-imgverify altker64 ${sigs}${menu}/altker64.sig || goto error
-imgverify initram.igz ${sigs}${menu}/initram.igz.sig || goto error
-imgverify sysrcd.dat ${sigs}${menu}/sysrcd.dat.sig || goto error
-echo Signatures verified!
-echo
-:skip_sigs_sysrcd
-boot
-goto utils_exit
+:github_barnabyc
+echo Chains into barnabyc @ github ...
+chain https://raw.githubusercontent.com/barnabyc/netboot.xyz-custom/master/custom.ipxe || goto custom
 
-:ubcd
-set util_path mirror.sysadminguide.net/ubcd/ubcd538.iso
-set util_file ubcd538.iso
-goto boot_memdisk
 
-:boot_memdisk
-imgfree
-kernel ${memdisk} iso raw
-initrd --name ${util_file} http://${util_path}
-echo
-echo MD5sums:
-md5sum memdisk ${util_file}
-iseq ${img_sigs_enabled} true && goto verify_sigs || goto skip_sigs
-:verify_sigs
-echo
-echo Checking signatures...
-imgverify memdisk ${sigs}memdisk.sig || goto error
-imgverify ${util_file} ${sigs}${menu}/${util_file}.sig || goto error
-echo Signatures verified!
-echo
-:skip_sigs
-boot
-goto utils_exit
+:github_BasicWombat
+echo Chains into BasicWombat @ github ...
+chain https://raw.githubusercontent.com/BasicWombat/netboot.xyz-custom/master/custom.ipxe || goto custom
 
-:boot_memtest
-chain https://${util_path} && goto main_menu ||
-goto utils_exit
+
+:github_baskedk
+echo Chains into baskedk @ github ...
+chain https://raw.githubusercontent.com/baskedk/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_fcenobi
+echo Chains into fcenobi @ github ...
+chain https://raw.githubusercontent.com/fcenobi/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_e1z0
+echo Chains into e1z0 @ github ...
+chain https://raw.githubusercontent.com/e1z0/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_GavinThornhill
+echo Chains into GavinThornhill @ github ...
+chain https://raw.githubusercontent.com/GavinThornhill/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_Firminator
+echo Chains into Firminator @ github ...
+chain https://raw.githubusercontent.com/Firminator/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_jraebrown
+echo Chains into jraebrown @ github ...
+chain https://raw.githubusercontent.com/jraebrown/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_jpastuszek
+echo Chains into jpastuszek @ github ...
+chain https://raw.githubusercontent.com/jpastuszek/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_joltcan
+echo Chains into joltcan @ github ...
+chain https://raw.githubusercontent.com/joltcan/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_jerrywoo96
+echo Chains into jerrywoo96 @ github ...
+chain https://raw.githubusercontent.com/jerrywoo96/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_Malmis
+echo Chains into Malmis @ github ...
+chain https://raw.githubusercontent.com/Malmis/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_ReubenBTalbott
+echo Chains into ReubenBTalbott @ github ...
+chain https://raw.githubusercontent.com/ReubenBTalbott/netboot.xyz-custom/master/windows.ipxe || goto custom
+
+
+:github_rjocoleman
+echo Chains into rjocoleman @ github ...
+chain https://raw.githubusercontent.com/rjocoleman/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_p0xus
+echo Chains into p0xus @ github ...
+chain https://raw.githubusercontent.com/p0xus/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_oppergod
+echo Chains into oppergod @ github ...
+chain https://raw.githubusercontent.com/oppergod/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+:github_Firminator
+echo Chains into Firminator @ github ...
+chain https://raw.githubusercontent.com/Firminator/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+
+
+
+
+
+
+
 
 :nbxyz-custom
 echo EXPERIMENTAL
@@ -173,6 +186,18 @@ echo
 echo Attempting to chainload branch or hash:
 chain --autofree https://raw.githubusercontent.com/${github_user}/netboot.xyz/${github_branch_or_hash}/src/menu.ipxe || echo Unable to find Github branch or hash... && sleep 5 && goto utils_exit
 goto utils_exit
+
+
+
+
+
+
+
+
+
+
+
+
 
 :utils_exit
 clear menu
