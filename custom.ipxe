@@ -1,5 +1,11 @@
 #!ipxe
 
+:start
+echo follow @Sevenleo !
+sleep 3
+
+
+
 
 
 
