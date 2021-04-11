@@ -15,6 +15,8 @@ item slax_x86 ${space} SLAX x86
 
 item --gap Utilities:
 item plop ${space} Plop Boot Manager 5.0
+item udpcast ${space} udpcast
+item ntpsswd_changepassword ${space} ntpsswd_changepassword
 
 #####################################################
 item --gap sub-menus:
@@ -45,6 +47,15 @@ set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/mast
 set util_file plpbt.iso
 goto boot_memdisk
 
+:udpcast
+set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+set util_file udpcd.iso
+goto boot_memdisk
+
+:ntpsswd_changepassword
+set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/ntpsswd_changepassword.iso
+set util_file ntpsswd_changepassword.iso
+goto boot_memdisk
 
 :example
 echo Chains into another menu...
