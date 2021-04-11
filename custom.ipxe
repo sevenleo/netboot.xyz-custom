@@ -4,21 +4,24 @@
 #echo follow @Sevenleo !
 #sleep 1
 
-menu follow @Sevenleo !
+menu 
+item --gap (reload)
+item github_sevenleo ${space} follow @Sevenleo !
 
 item --gap Windows:
 
 item --gap Linux:
+item slax_x86 ${space} SLAX x86
 
 item --gap Utilities:
 item plop ${space} Plop Boot Manager 5.0
-item slax_x86 ${space} SLAX x86
 
+#####################################################
 item --gap sub-menus:
 item example ${space} example
 item example_github ${space} Loads custom from github
 
-
+#####################################################
 item --gap
 choose --default ${menu} menu || goto utils_exit
 echo ${cls}
@@ -26,6 +29,11 @@ goto ${menu} ||
 chain ${menu}.ipxe || goto utils_exit
 goto utils_exit
 
+######################################################################################################
+
+:github_sevenleo
+echo Chains into sevenleo @ github ...
+chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe || goto custom
 
 :slax_x86
 set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
