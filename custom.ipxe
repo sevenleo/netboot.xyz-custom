@@ -5,16 +5,11 @@
 
 :start
 echo Hello world!
-sleep 10
-goto custom_exit
-
-:slax_x86
-set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
-set util_file slax-32bit-9.11.0.iso
-goto boot_memdisk
+#sleep 10
+#goto custom_exit
 
 :custom_exit
-exit 0
+#exit 0
 
 
 
@@ -25,6 +20,7 @@ exit 0
 
 menu Utilities - Image Sig Checks: [${img_sigs_enabled}]
 item --gap Utilities:
+item slax_x86 ${space} SLAX x86
 item alt_linux_rescue ${space} ALT Linux Rescue
 item debian ${space} Debian Live XFCE
 item breakin ${space} Breakin
@@ -44,6 +40,12 @@ echo ${cls}
 goto ${menu} ||
 chain ${menu}.ipxe || goto utils_exit
 goto utils_exit
+
+:slax_x86
+set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
+set util_file slax-32bit-9.11.0.iso
+goto boot_memdisk
+
 
 :alt_linux_rescue
 iseq ${arch} x86_64 && goto alt_linux_rescue_x64 ||
