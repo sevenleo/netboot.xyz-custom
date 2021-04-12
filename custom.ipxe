@@ -57,17 +57,14 @@ set util_file slax-32bit-9.11.0.iso
 goto boot_memdisk
 
 :plop
-set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/plpbt.iso
-set util_file plpbt.iso
-goto boot_memdisk
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/plpbt.iso
+boot || goto custom_exit
 
 :udpcast
-#set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
-#set util_file udpcd.iso
-#goto boot_memdisk
 kernel https://boot.netboot.xyz/memdisk raw iso
 initrd https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
-boot
+boot || goto custom_exit
 
 :ntpsswd_changepassword
 set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/ntpsswd_changepassword.iso
@@ -84,12 +81,17 @@ echo Chains into another menu...
 chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom_github.ipxe || goto custom
 
 
+:hirens
+set base-url http://....
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd ${base-url}/Hirens.BootCD.15.2.iso
+boot || goto custom_exit
 
 
 
-
-
-
+:custom_exit
+chain utils.ipxe
+exit
 
 :utils_exit
 clear menu
