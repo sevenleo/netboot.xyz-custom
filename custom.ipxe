@@ -1,12 +1,17 @@
 #!ipxe
 
-#:start
-#echo follow @Sevenleo !
+:start
+echo follow @Sevenleo !
 #sleep 1
+#echo ${cls}
 
+isset ${server-url} || set server-url http://10.10.10.4:8080
+#sanboot ${server-url}/iso/ubuntu-16.04.6-desktop-i386.iso
+
+##########################################################################################################
 menu 
-item --gap reload
-item github_sevenleo ${space} follow @Sevenleo !
+item --gap [R]eload
+item --key R github_sevenleo ${space} follow @Sevenleo !
 
 item --gap Windows:
 
@@ -26,6 +31,10 @@ item ntpsswd_changepassword ${space} ntpsswd_changepassword
 item --gap sub-menus:
 item example ${space} example
 item example_github ${space} Loads custom from github
+item --key 1 test1 ${space} test [1]
+item --key 2 test2 ${space} test [2]
+item --key 3 test3 ${space} test [3]
+item --key 4 test4 ${space} test [4]
 
 #####################################################
 item --gap
@@ -35,11 +44,17 @@ goto ${menu} ||
 chain ${menu}.ipxe || goto utils_exit
 goto utils_exit
 
-######################################################################################################
+
+##########################################################################################################
+
+
+################################################ reload 
 
 :github_sevenleo
 echo Chains into sevenleo @ github ...
 chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+################################################ android
 
 :android_x86_1
 set util_path https://ftp.halifax.rwth-aachen.de/osdn/android-x86/68670/cm-x86-14.1-r5.iso
@@ -51,10 +66,15 @@ set util_path https://steve.dwl.fosshub.com/Protected/5b8fb9cc59eee027c3d78baf/5
 set util_file android-x86_64-9.0-r2.iso
 goto boot_memdisk
 
+################################################ windows
+
+################################################ linux
 :slax_x86
 set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
 set util_file slax-32bit-9.11.0.iso
 goto boot_memdisk
+
+################################################ utils
 
 :plop
 kernel https://boot.netboot.xyz/memdisk raw iso
@@ -71,6 +91,14 @@ set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/mast
 set util_file ntpsswd_changepassword.iso
 goto boot_memdisk
 
+:hirens
+set base-url http://....
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd ${base-url}/Hirens.BootCD.15.2.iso
+boot || goto custom_exit
+
+################################################ example
+
 :example
 echo Chains into another menu...
 chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe.example || goto custom
@@ -80,19 +108,30 @@ chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custo
 echo Chains into another menu...
 chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom_github.ipxe || goto custom
 
+:test1
+sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+goto custom
 
-:hirens
-set base-url http://....
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd ${base-url}/Hirens.BootCD.15.2.iso
-boot || goto custom_exit
+:test2
+imgfree
+sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+goto custom
 
+:test3
+set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+set util_file udpcd.iso
+goto boot_memdisk
+
+
+##########################################################################################################
 
 
 :custom_exit
+imgfree  # Discard any already-downloaded images
 chain utils.ipxe
 exit
 
 :utils_exit
+imgfree  # Discard any already-downloaded images
 clear menu
 exit 0
