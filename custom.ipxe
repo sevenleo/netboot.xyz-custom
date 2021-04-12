@@ -13,6 +13,10 @@ item --gap Windows:
 item --gap Linux:
 item slax_x86 ${space} SLAX x86
 
+item --gap Android:
+item android_x86_1 ${space} cm-x86-14.1-r5.iso
+item android_x86_2 ${space} android-x86_64-9.0-r2.iso
+
 item --gap Utilities:
 item plop ${space} Plop Boot Manager 5.0
 item udpcast ${space} UDPCast
@@ -36,6 +40,16 @@ goto utils_exit
 :github_sevenleo
 echo Chains into sevenleo @ github ...
 chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+:android_x86_1
+set util_path https://ftp.halifax.rwth-aachen.de/osdn/android-x86/68670/cm-x86-14.1-r5.iso
+set util_file cm-x86-14.1-r5.iso
+goto boot_memdisk
+
+:android_x86_2
+set util_path https://steve.dwl.fosshub.com/Protected/5b8fb9cc59eee027c3d78baf/5e7b309a84fe8e0d1d2be1d5/android-x86_64-9.0-r2.iso?st=uDdUxWQi6w2552H4tdw9jQ&e=1618244868
+set util_file android-x86_64-9.0-r2.iso
+goto boot_memdisk
 
 :slax_x86
 set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
