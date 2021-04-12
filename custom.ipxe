@@ -26,6 +26,7 @@ item --gap Utilities:
 item plop ${space} Plop Boot Manager 5.0
 item udpcast ${space} UDPCast
 item ntpsswd_changepassword ${space} ntpsswd_changepassword
+item HBCD_PE_x64 ${space} HBCD_PE_x64
 
 #####################################################
 item --gap sub-menus:
@@ -35,6 +36,7 @@ item --key 1 test1 ${space} test [1]
 item --key 2 test2 ${space} test [2]
 item --key 3 test3 ${space} test [3]
 item --key 4 test4 ${space} test [4]
+item --key 5 test5 ${space} test [5]
 
 #####################################################
 item --gap
@@ -57,14 +59,14 @@ chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custo
 ################################################ android
 
 :android_x86_1
-set util_path https://ftp.halifax.rwth-aachen.de/osdn/android-x86/68670/cm-x86-14.1-r5.iso
-set util_file cm-x86-14.1-r5.iso
-goto boot_memdisk
+sanboot --no-describe https://ftp.halifax.rwth-aachen.de/osdn/android-x86/68670/cm-x86-14.1-r5.iso
+goto custom_exit
+
 
 :android_x86_2
-set util_path https://steve.dwl.fosshub.com/Protected/5b8fb9cc59eee027c3d78baf/5e7b309a84fe8e0d1d2be1d5/android-x86_64-9.0-r2.iso?st=uDdUxWQi6w2552H4tdw9jQ&e=1618244868
-set util_file android-x86_64-9.0-r2.iso
-goto boot_memdisk
+sanboot --no-describe https://steve.dwl.fosshub.com/Protected/5b8fb9cc59eee027c3d78baf/5e7b309a84fe8e0d1d2be1d5/android-x86_64-9.0-r2.iso?st=uDdUxWQi6w2552H4tdw9jQ&e=1618244868
+goto custom_exit
+
 
 ################################################ windows
 
@@ -77,25 +79,25 @@ goto boot_memdisk
 ################################################ utils
 
 :plop
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/plpbt.iso
-boot || goto custom_exit
+imgfree
+sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/plpbt.iso
+goto custom_exit
 
 :udpcast
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
-boot || goto custom_exit
+imgfree
+sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+goto custom_exit
 
 :ntpsswd_changepassword
-set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/ntpsswd_changepassword.iso
-set util_file ntpsswd_changepassword.iso
-goto boot_memdisk
+imgfree
+sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/ntpsswd_changepassword.iso
+goto custom_exit
 
-:hirens
-set base-url http://....
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd ${base-url}/Hirens.BootCD.15.2.iso
-boot || goto custom_exit
+:HBCD_PE_x64
+imgfree
+sanboot --no-describe https://www.hirensbootcd.org/files/HBCD_PE_x64.iso
+goto custom_exit
+
 
 ################################################ example
 
@@ -109,19 +111,22 @@ echo Chains into another menu...
 chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom_github.ipxe || goto custom
 
 :test1
-sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
-goto custom
+goto custom_exit
 
 :test2
 imgfree
 sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
-goto custom
+goto custom_exit
 
 :test3
 set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
 set util_file udpcd.iso
 goto boot_memdisk
 
+:test5
+set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+set util_file https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+goto boot_memdisk
 
 ##########################################################################################################
 
