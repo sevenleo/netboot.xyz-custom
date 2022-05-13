@@ -15,8 +15,16 @@ item --key R github_sevenleo ${space} follow @Sevenleo !
 
 item --gap Windows:
 
+
+item --gap WinPE:
+item win10pe50.iso ${space} Win10 PE 5.0 
+item win7pe50.iso ${space} Win7 PE 5.0
+item winpex64.iso ${space} WinPE x64
+item winpex86.iso ${space} WinPE x86
+
 item --gap Linux:
 item slax_x86 ${space} SLAX x86
+
 
 item --gap Android:
 item android_x86_1 ${space} cm-x86-14.1-r5.iso
@@ -77,6 +85,32 @@ goto custom_exit
 
 
 ################################################ windows
+
+
+################################################ winpe
+
+:win10pe50.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/winpe/win10pe50.iso
+goto custom_exit
+
+
+:win7pe50.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/winpe/win7pe50.iso
+goto custom_exit
+
+
+:winpex64.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/winpe/winpex64.iso
+goto custom_exit
+
+
+:winpex86.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/winpe/winpex86.iso
+goto custom_exit
 
 ################################################ linux
 :slax_x86
