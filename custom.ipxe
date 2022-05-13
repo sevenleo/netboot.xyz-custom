@@ -22,10 +22,16 @@ item win7pe50.iso ${space} Win7 PE 5.0
 item winpex64.iso ${space} WinPE x64
 item winpex86.iso ${space} WinPE x86
 
+
 item --gap Linux:
 item slax_x86 ${space} SLAX x86
-item g4lefi-0.60.iso ${space} g4lefi-0.60.iso
-item g4l-v0.60.iso ${space} g4l-v0.60.iso
+item Porteus-LXDE-v5.0rc3-x86_64.iso ${space} Porteus-LXDE-v5.0rc3-x86_64.iso
+item bodhi-6.0.0-64-hwe.iso ${space} bodhi-6.0.0-64-hwe.iso
+item elementaryos-6.1-stable.20211218-rc.iso ${space} elementaryos-6.1-stable.20211218-rc.iso
+item rescuezilla-2.3.1-64bit.impish.iso ${space} rescuezilla-2.3.1-64bit.impish.iso
+item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
+item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
+
 
 item --gap Android:
 item android_x86_1 ${space} cm-x86-14.1-r5.iso
@@ -34,12 +40,8 @@ item android_x86_2 ${space} android-x86_64-8.1-rc2.iso
 
 item --gap Utilities:
 item ventoy-livecd.iso ${space} ventoy-livecd.iso
-item Porteus-LXDE-v5.0rc3-x86_64.iso ${space} Porteus-LXDE-v5.0rc3-x86_64.iso
-item bodhi-6.0.0-64-hwe.iso ${space} bodhi-6.0.0-64-hwe.iso
-item elementaryos-6.1-stable.20211218-rc.iso ${space} elementaryos-6.1-stable.20211218-rc.iso
-item rescuezilla-2.3.1-64bit.impish.iso ${space} rescuezilla-2.3.1-64bit.impish.iso
-item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
-item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
+item g4lefi-0.60.iso ${space} g4lefi-0.60.iso
+item g4l-v0.60.iso ${space} g4l-v0.60.iso
 item pmagic ${space} Parted Magic
 item boot-partitionwizard811.iso ${space} Partition Wizard 8.11
 item boot-repair-disk-32bit.iso ${space} boot-repair-disk-32bit
