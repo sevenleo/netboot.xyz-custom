@@ -23,6 +23,8 @@ item android_x86_1 ${space} cm-x86-14.1-r5.iso
 item android_x86_2 ${space} android-x86_64-9.0-r2.iso
 
 item --gap Utilities:
+item pmagic0 ${space} PMagic 0
+item pmagic1 ${space} PMagic 1
 item plop ${space} Plop Boot Manager 5.0
 item udpcast ${space} UDPCast
 item ntpsswd_changepassword ${space} ntpsswd_changepassword
@@ -76,7 +78,19 @@ set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
 set util_file slax-32bit-9.11.0.iso
 goto boot_memdisk
 
+
+
 ################################################ utils
+
+:pmagic0
+set util_path http://10.10.10.4/linux/pmagic.iso
+set util_file pmagic.iso
+goto boot_memdisk
+
+:pmagic1
+imgfree
+sanboot --no-describe http://10.10.10.4/linux/pmagic.iso
+goto custom_exit
 
 :plop
 imgfree
