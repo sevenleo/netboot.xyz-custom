@@ -23,8 +23,14 @@ item android_x86_1 ${space} cm-x86-14.1-r5.iso
 item android_x86_2 ${space} android-x86_64-9.0-r2.iso
 
 item --gap Utilities:
-item pmagic0 ${space} PMagic 0
-item pmagic1 ${space} PMagic 1
+item pmagic ${space} Parted Magic
+item boot-partitionwizard811.iso ${space} Partition Wizard 8.11
+item boot-repair-disk-32bit.iso ${space} boot-repair-disk-32bit
+item boot-repair-disk-64bit.iso ${space} boot-repair-disk-64bit
+item easeus.11.5.iso ${space} Easeus Todo Backup 11
+item hdd.regenerator.iso ${space} HDDRegenerator
+item hiren's.bootcd.15.2.iso ${space} Hiren's Boot 15
+item norton.ghost.1501.iso ${space} Norton Ghost 15
 item plop ${space} Plop Boot Manager 5.0
 item udpcast ${space} UDPCast
 item ntpsswd_changepassword ${space} ntpsswd_changepassword
@@ -82,14 +88,51 @@ goto boot_memdisk
 
 ################################################ utils
 
-:pmagic0
-set util_path http://10.10.10.4/linux/pmagic.iso
-set util_file pmagic.iso
-goto boot_memdisk
-
-:pmagic1
+:pmagic
 imgfree
-sanboot --no-describe http://10.10.10.4/linux/pmagic.iso
+sanboot --no-describe http://10.10.10.4/util/pmagic.iso
+goto custom_exit
+
+
+:boot-partitionwizard811.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/boot-partitionwizard811.iso
+goto custom_exit
+
+
+:boot-repair-disk-32bit.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/boot-repair-disk-32bit.iso
+goto custom_exit
+
+
+:boot-repair-disk-64bit.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/boot-repair-disk-64bit.iso
+goto custom_exit
+
+
+:easeus.11.5.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/easeus.11.5.iso
+goto custom_exit
+
+
+:hdd.regenerator.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/hdd.regenerator.iso
+goto custom_exit
+
+
+:hiren's.bootcd.15.2.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/hiren's.bootcd.15.2.iso
+goto custom_exit
+
+
+:norton.ghost.1501.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/norton.ghost.1501.iso
 goto custom_exit
 
 :plop
