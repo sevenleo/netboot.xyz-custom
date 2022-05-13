@@ -24,22 +24,13 @@ item winpex86.iso ${space} WinPE x86
 
 item --gap Linux:
 item slax_x86 ${space} SLAX x86
-item g4lefi-0.60.iso ${space} g4lefi-0.60.iso
-item g4l-v0.60.iso ${space} g4l-v0.60.iso
+
 
 item --gap Android:
 item android_x86_1 ${space} cm-x86-14.1-r5.iso
-item android_x86_2 ${space} android-x86_64-8.1-rc2.iso
-
+item android_x86_2 ${space} android-x86_64-9.0-r2.iso
 
 item --gap Utilities:
-item ventoy-livecd.iso ${space} ventoy-livecd.iso
-item Porteus-LXDE-v5.0rc3-x86_64.iso ${space} Porteus-LXDE-v5.0rc3-x86_64.iso
-item bodhi-6.0.0-64-hwe.iso ${space} bodhi-6.0.0-64-hwe.iso
-item elementaryos-6.1-stable.20211218-rc.iso ${space} elementaryos-6.1-stable.20211218-rc.iso
-item rescuezilla-2.3.1-64bit.impish.iso ${space} rescuezilla-2.3.1-64bit.impish.iso
-item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
-item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
 item pmagic ${space} Parted Magic
 item boot-partitionwizard811.iso ${space} Partition Wizard 8.11
 item boot-repair-disk-32bit.iso ${space} boot-repair-disk-32bit
@@ -53,6 +44,15 @@ item udpcast ${space} UDPCast
 item ntpsswd_changepassword ${space} ntpsswd_changepassword
 item HBCD_PE_x64 ${space} HBCD_PE_x64
 
+#####################################################
+item --gap sub-menus:
+item example ${space} example
+item example_github ${space} Loads custom from github
+item --key 1 test1 ${space} test [1]
+item --key 2 test2 ${space} test [2]
+item --key 3 test3 ${space} test [3]
+item --key 4 test4 ${space} test [4]
+item --key 5 test5 ${space} test [5]
 
 #####################################################
 item --gap
@@ -63,30 +63,7 @@ chain ${menu}.ipxe || goto utils_exit
 goto utils_exit
 
 
-
-
-
-
-
-
-
-
-
-
 ##########################################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ################################################ reload 
@@ -103,7 +80,7 @@ goto custom_exit
 
 
 :android_x86_2
-sanboot --no-describe https://ftp.halifax.rwth-aachen.de/osdn/android-x86/69704/android-x86_64-8.1-rc2.iso
+sanboot --no-describe https://steve.dwl.fosshub.com/Protected/5b8fb9cc59eee027c3d78baf/5e7b309a84fe8e0d1d2be1d5/android-x86_64-9.0-r2.iso?st=uDdUxWQi6w2552H4tdw9jQ&e=1618244868
 goto custom_exit
 
 
@@ -136,68 +113,14 @@ sanboot --no-describe http://10.10.10.4/winpe/winpex86.iso
 goto custom_exit
 
 ################################################ linux
-
 :slax_x86
 set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
 set util_file slax-32bit-9.11.0.iso
 goto boot_memdisk
 
 
-:Porteus-LXDE-v5.0rc3-x86_64.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/Porteus-LXDE-v5.0rc3-x86_64.iso
-goto custom_exit
-
-
-:bodhi-6.0.0-64-hwe.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/bodhi-6.0.0-64-hwe.iso
-goto custom_exit
-
-
-:elementaryos-6.1-stable.20211218-rc.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/elementaryos-6.1-stable.20211218-rc.iso
-goto custom_exit
-
-
-:rescuezilla-2.3.1-64bit.impish.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/rescuezilla-2.3.1-64bit.impish.iso
-goto custom_exit
-
-
-:chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
-goto custom_exit
-
-
-:chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
-goto custom_exit
-
 
 ################################################ utils
-
-:g4lefi-0.60.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/util/g4lefi-0.60.iso
-goto custom_exit
-
-
-:g4l-v0.60.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/util/g4l-v0.60.iso
-goto custom_exit
-
-
-:ventoy-livecd.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/util/ventoy-livecd.iso
-goto custom_exit
-
 
 :pmagic
 imgfree
@@ -235,9 +158,9 @@ sanboot --no-describe http://10.10.10.4/util/hdd.regenerator.iso
 goto custom_exit
 
 
-:hirens.bootcd.15.2.iso
+:hiren's.bootcd.15.2.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/hirens.bootcd.15.2.iso
+sanboot --no-describe http://10.10.10.4/util/hiren's.bootcd.15.2.iso
 goto custom_exit
 
 
@@ -265,6 +188,36 @@ goto custom_exit
 imgfree
 sanboot --no-describe https://www.hirensbootcd.org/files/HBCD_PE_x64.iso
 goto custom_exit
+
+
+################################################ example
+
+:example
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom.ipxe.example || goto custom
+
+
+:example_github
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/custom_github.ipxe || goto custom
+
+:test1
+goto custom_exit
+
+:test2
+imgfree
+sanboot --no-describe https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+goto custom_exit
+
+:test3
+set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+set util_file udpcd.iso
+goto boot_memdisk
+
+:test5
+set util_path https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+set util_file https://raw.githubusercontent.com/sevenleo/netboot.xyz-custom/master/tools/udpcd.iso
+goto boot_memdisk
 
 ##########################################################################################################
 
