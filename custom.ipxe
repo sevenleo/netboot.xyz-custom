@@ -28,7 +28,6 @@ item slax_x86 ${space} SLAX x86
 item Porteus-LXDE-v5.0rc3-x86_64.iso ${space} Porteus-LXDE-v5.0rc3-x86_64.iso
 item bodhi-6.0.0-64-hwe.iso ${space} bodhi-6.0.0-64-hwe.iso
 item elementaryos-6.1-stable.20211218-rc.iso ${space} elementaryos-6.1-stable.20211218-rc.iso
-item rescuezilla-2.3.1-64bit.impish.iso ${space} rescuezilla-2.3.1-64bit.impish.iso
 item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
 item chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img ${space} chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
 
@@ -40,6 +39,7 @@ item android_x86_2 ${space} android-x86_64-8.1-rc2.iso
 
 item --gap Utilities:
 item clonezilla ${space} clonezilla
+item rescuezilla-2.3.1-64bit.impish.iso ${space} rescuezilla-2.3.1-64bit.impish.iso
 item ventoy-livecd.iso ${space} ventoy-livecd.iso
 item g4lefi-0.60.iso ${space} g4lefi-0.60.iso
 item g4l-v0.60.iso ${space} g4l-v0.60.iso
@@ -146,12 +146,6 @@ set util_file slax-32bit-9.11.0.iso
 goto boot_memdisk
 
 
-:clonezilla
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/clonezilla-live-2.8.1-12-amd64.iso
-goto custom_exit
-
-
 :Porteus-LXDE-v5.0rc3-x86_64.iso
 imgfree
 sanboot --no-describe http://10.10.10.4/linux/Porteus-LXDE-v5.0rc3-x86_64.iso
@@ -170,12 +164,6 @@ sanboot --no-describe http://10.10.10.4/linux/elementaryos-6.1-stable.20211218-r
 goto custom_exit
 
 
-:rescuezilla-2.3.1-64bit.impish.iso
-imgfree
-sanboot --no-describe http://10.10.10.4/linux/rescuezilla-2.3.1-64bit.impish.iso
-goto custom_exit
-
-
 :chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
 imgfree
 sanboot --no-describe http://10.10.10.4/linux/chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
@@ -189,6 +177,17 @@ goto custom_exit
 
 
 ################################################ utils
+
+:clonezilla
+imgfree
+sanboot --no-describe http://10.10.10.4/util/clonezilla-live-2.8.1-12-amd64.iso
+goto custom_exit
+
+
+:rescuezilla-2.3.1-64bit.impish.iso
+imgfree
+sanboot --no-describe http://10.10.10.4/util/rescuezilla-2.3.1-64bit.impish.iso
+goto custom_exit
 
 :g4lefi-0.60.iso
 imgfree
