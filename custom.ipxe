@@ -39,6 +39,7 @@ item android_x86_2 ${space} android-x86_64-8.1-rc2.iso
 
 
 item --gap Utilities:
+item clonezilla ${space} clonezilla
 item ventoy-livecd.iso ${space} ventoy-livecd.iso
 item g4lefi-0.60.iso ${space} g4lefi-0.60.iso
 item g4l-v0.60.iso ${space} g4l-v0.60.iso
@@ -143,6 +144,12 @@ goto custom_exit
 set util_path ftp.sh.cvut.cz/slax/Slax-9.x/slax-32bit-9.11.0.iso
 set util_file slax-32bit-9.11.0.iso
 goto boot_memdisk
+
+
+:clonezilla
+imgfree
+sanboot --no-describe http://10.10.10.4/linux/clonezilla-live-2.8.1-12-amd64.iso
+goto custom_exit
 
 
 :Porteus-LXDE-v5.0rc3-x86_64.iso
