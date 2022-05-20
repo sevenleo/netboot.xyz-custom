@@ -1,11 +1,12 @@
 #!ipxe
 
+
 :start
 echo follow @Sevenleo !
 #sleep 1
 #echo ${cls}
 
-isset ${server-url} || set server-url http://10.10.10.4:8080
+isset ${server-url} || set server-url http://10.10.10.4
 #sanboot ${server-url}/iso/ubuntu-16.04.6-desktop-i386.iso
 
 ##########################################################################################################
@@ -117,25 +118,25 @@ goto custom_exit
 
 :win10pe50.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/winpe/win10pe50.iso
+sanboot --no-describe ${server-url}/winpe/win10pe50.iso
 goto custom_exit
 
 
 :win7pe50.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/winpe/win7pe50.iso
+sanboot --no-describe ${server-url}/winpe/win7pe50.iso
 goto custom_exit
 
 
 :winpex64.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/winpe/winpex64.iso
+sanboot --no-describe ${server-url}/winpe/winpex64.iso
 goto custom_exit
 
 
 :winpex86.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/winpe/winpex86.iso
+sanboot --no-describe ${server-url}/winpe/winpex86.iso
 goto custom_exit
 
 ################################################ linux
@@ -148,31 +149,31 @@ goto boot_memdisk
 
 :Porteus-LXDE-v5.0rc3-x86_64.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/linux/Porteus-LXDE-v5.0rc3-x86_64.iso
+sanboot --no-describe ${server-url}/linux/Porteus-LXDE-v5.0rc3-x86_64.iso
 goto custom_exit
 
 
 :bodhi-6.0.0-64-hwe.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/linux/bodhi-6.0.0-64-hwe.iso
+sanboot --no-describe ${server-url}/linux/bodhi-6.0.0-64-hwe.iso
 goto custom_exit
 
 
 :elementaryos-6.1-stable.20211218-rc.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/linux/elementaryos-6.1-stable.20211218-rc.iso
+sanboot --no-describe ${server-url}/linux/elementaryos-6.1-stable.20211218-rc.iso
 goto custom_exit
 
 
 :chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
 imgfree
-sanboot --no-describe http://10.10.10.4/linux/chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
+sanboot --no-describe ${server-url}/linux/chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.bin
 goto custom_exit
 
 
 :chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
 imgfree
-sanboot --no-describe http://10.10.10.4/linux/chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
+sanboot --no-describe ${server-url}/linux/chromeos_14685.0.0_reven_recovery_dev-channel_mp-v2.img
 goto custom_exit
 
 
@@ -180,78 +181,78 @@ goto custom_exit
 
 :clonezilla
 imgfree
-sanboot --no-describe http://10.10.10.4/util/clonezilla-live-2.8.1-12-amd64.iso
+sanboot --no-describe ${server-url}/util/clonezilla-live-2.8.1-12-amd64.iso
 goto custom_exit
 
 
 :rescuezilla-2.3.1-64bit.impish.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/rescuezilla-2.3.1-64bit.impish.iso
+sanboot --no-describe ${server-url}/util/rescuezilla-2.3.1-64bit.impish.iso
 goto custom_exit
 
 :g4lefi-0.60.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/g4lefi-0.60.iso
+sanboot --no-describe ${server-url}/util/g4lefi-0.60.iso
 goto custom_exit
 
 
 :g4l-v0.60.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/g4l-v0.60.iso
+sanboot --no-describe ${server-url}/util/g4l-v0.60.iso
 goto custom_exit
 
 
 :ventoy-livecd.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/ventoy-livecd.iso
+sanboot --no-describe ${server-url}/util/ventoy-livecd.iso
 goto custom_exit
 
 
 :pmagic
 imgfree
-sanboot --no-describe http://10.10.10.4/util/pmagic.iso
+sanboot --no-describe ${server-url}/util/pmagic.iso
 goto custom_exit
 
 
 :boot-partitionwizard811.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/boot-partitionwizard811.iso
+sanboot --no-describe ${server-url}/util/boot-partitionwizard811.iso
 goto custom_exit
 
 
 :boot-repair-disk-32bit.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/boot-repair-disk-32bit.iso
+sanboot --no-describe ${server-url}/util/boot-repair-disk-32bit.iso
 goto custom_exit
 
 
 :boot-repair-disk-64bit.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/boot-repair-disk-64bit.iso
+sanboot --no-describe ${server-url}/util/boot-repair-disk-64bit.iso
 goto custom_exit
 
 
 :easeus.11.5.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/easeus.11.5.iso
+sanboot --no-describe ${server-url}/util/easeus.11.5.iso
 goto custom_exit
 
 
 :hdd.regenerator.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/hdd.regenerator.iso
+sanboot --no-describe ${server-url}/util/hdd.regenerator.iso
 goto custom_exit
 
 
 :hirens.bootcd.15.2.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/hirens.bootcd.15.2.iso
+sanboot --no-describe ${server-url}/util/hirens.bootcd.15.2.iso
 goto custom_exit
 
 
 :norton.ghost.1501.iso
 imgfree
-sanboot --no-describe http://10.10.10.4/util/norton.ghost.1501.iso
+sanboot --no-describe ${server-url}/util/norton.ghost.1501.iso
 goto custom_exit
 
 :plop
